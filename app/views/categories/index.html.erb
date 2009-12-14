@@ -1,0 +1,35 @@
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+<%= render :partial => "main/logo" %>
+<%= render :partial => "users/menu" %>
+</td>
+<td>
+<blockquote>
+<table cellspacing="2" cellpadding="2" class="www">
+<tr>
+ <td><%= link_to "create a new category", new_category_path, :style=>'padding:5px;background:#6E6A6B;font-weight:bold;color:white' %></td>
+</tr>
+<tr>
+  <th>CATEGORY</th>
+  <th>PARENT</th>
+  <th>SEO URL</th>
+</tr>
+<% for category in @categories %>
+  <tr style="background:white;color:green;font-weight:bold;font-size:13px;">
+    <td><%=h category.name %></td>
+    <td><%=h category.parent_id == 0?"Top Level":category.parent.name %></td>
+    <td><%=h category.permalink %></td>
+    
+    <td><%= link_to 'Edit', edit_category_path(category) %></td>
+    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+
+</blockquote>
+</td>
+</tr>
+</table>
+

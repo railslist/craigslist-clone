@@ -1,0 +1,49 @@
+<div class="breadcrumb"> 
+  <a href="/<%=@classified.city.permalink%>"><%=@classified.city.name%></a> > <a href="/<%=[@classified.city.permalink,@classified.category.permalink].join('/')%>"><%=@classified.category.name%></a> > <a href="/<%=[@classified.city.permalink,@classified.subcategory.permalink].join('/')%>"><%=@classified.subcategory.name%></a>
+</div>
+<div id="flags">
+  do flag with care:<br /><br />
+    <a href="#">miscategorised</a><br /><br />
+    <a href="#">prohibited</a><br /><br />
+    <a href="#">spam/overpost</a><br /><br />
+    <a href="#">one of the best!!</a><br /><br />
+</div>
+<div class="highlight">Beware of scams &amp; frauds.&nbsp;&nbsp;Always deal locally and in-person</div>
+<h2><%= @classified.title %><%= !(@classified.location.nil?)?" (#{@classified.location})":""%></h2>
+<hr size="1" />
+
+  <table>
+  <tr>
+  <td>Ad Type: </td>
+  <td>&nbsp;</td>
+  <td><%= @classified.adtype == "O"?"Wanted":"Offered" %></td>
+  </tr>
+  <tr>
+  <td>&nbsp;&nbsp;&nbsp;Posted:</td>
+  <td>&nbsp;</td>
+  <td><%= @classified.created_at.strftime('%Y-%m-%d, %I:%M%p') %></td>
+  </tr>
+  <tr>
+  <td colspan="3"><button type="button" style="color:green;height:30px;font-weight:bold;" onclick="$('reply2').toggle();">reply to advertiser</button></td>  
+  </tr>
+  </table>
+
+<hr size="1" />     
+<table>
+<tr valign="top">
+<td>
+<div id="reply2" style="display:none;">
+  <%= render :partial => 'contact_mailer/contact_advertiser'%>  
+</div>
+</td>
+<td>
+<%= @classified.description.gsub("\r\n","<br />")%>
+      <p>
+      <% if @classified.image.exists? %>
+        <%= image_tag @classified.image.url %>
+      <% end %>
+      </p>    
+</td>
+</tr>
+</table>
+<hr size="1" />

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="en-us" />
+<meta name="keywords" content="<%= @page_metakey%>" />
+<meta name="description" content="<%= @page_metadesc%>" />
+<title><%= @page_title || "railslist classifieds: jobs, housing, personals, for sale, services and community" %></title>
+<%= stylesheet_link_tag "railslist.css", :cache => "cache/railslist" %>
+<%= javascript_include_tag :defaults, :cache => "cache/railslist" %>
+</head>                        
+<body class="post"> 
+  <% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :class => key, :id => key %>
+  <% end %>
+
+  <%= yield -%>
+</body>
+</html>

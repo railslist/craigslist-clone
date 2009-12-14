@@ -1,0 +1,30 @@
+<div class="breadcrumb">
+  <span id="bc">               
+    <b><%= @category.name %> : <%= @city.name %></b>
+  </span>  
+  <a href="/<%= @city.permalink %>"><%= @city.name %></a> > <a href="/<%=[@city.permalink,@category.permalink].join('/') %>"><%= @category.name %></a>
+</div> 
+<blockquote>
+<%= render :partial => "main/mainsearch" %>
+<br />
+<table width="100%">
+<tr><td>
+<b style="font-size:18px">search results for: [ <%= params[:mainquery] %> ] in <%= @category.name %> / <%= @city.name %></b>
+<% for c in @classifieds %>
+             
+    <%if c.image.exists? -%>      
+      <p><%= c.created_at.strftime('%a, %d %b')%> - <a href="/<%=[c.city.permalink,c.subcategory.permalink,c.permalink].join('/')%>" target="_blank"><%=c.title%></a> <%=" - (#{c.location}) " if !c.location.blank?%> <span class='pic'>pic</span> &lt;&lt; <i><a href="/<%=[c.city.permalink,c.subcategory.permalink].join('/')%>"><%=c.subcategory.name%></a></i></p>
+    <%else%>
+      <p><%= c.created_at.strftime('%a, %d %b')%> - <a href="/<%=[c.city.permalink,c.subcategory.permalink,c.permalink].join('/')%>" target="_blank"><%=c.title%></a> <%=" - (#{c.location}) " if !c.location.blank?%> &lt;&lt; <i><a href="/<%=[c.city.permalink,c.subcategory.permalink].join('/')%>"><%=c.subcategory.name%></a></i></p>
+    <%end%>
+  
+<% end %>
+<br />
+<%= will_paginate @classifieds %><br />
+<hr />
+
+<div id="poweredby">powered by <a href="http://www.railslist.com">railslist</a></div>
+</td>
+</tr>
+</table>
+</blockquote>

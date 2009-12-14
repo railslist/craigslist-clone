@@ -1,0 +1,34 @@
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+  <%= render :partial => "main/logo" %>
+  <%= render :partial => "users/menu" %>
+</td>
+<td>
+<blockquote>
+<table cellspacing="2" cellpadding="2" class="www">
+<tr>
+ <td><%= link_to "create a new subcategory", new_subcategory_path, :style=>'padding:5px;background:#6E6A6B;font-weight:bold;color:white' %></td>
+</tr>
+<tr>
+  <th>SUBCATEGORY</th>
+  <th>PARENT</th>
+  <th>SEO URL</th>
+</tr>
+<% for subcategory in @subcategories %>
+  <tr style="background:white;color:green;font-weight:bold;font-size:13px;">
+    <td><%=h subcategory.name %></td>
+    <td><%=h subcategory.category.name %></td>
+    <td><%=h subcategory.permalink %></td>
+          
+    <td><%= link_to 'Edit', edit_subcategory_path(subcategory) %></td>
+    <td><%= link_to 'Destroy', subcategory, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+</blockquote>
+</td>
+</tr>
+</table>
+

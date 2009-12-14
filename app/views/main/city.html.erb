@@ -1,0 +1,56 @@
+<% catcount = 0 %>
+
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+  <%= render :partial => "main/logo" %>
+  <%= render :partial => "main/menu" %>
+  <%form_tag 'mainsearch', :method=>'get' do %>
+  <table cellpadding="2" id="mainsearch">
+    <tr><td>
+      <%= radio_button_tag "adtype","O", :checked=>true %>&nbsp;Offered
+      &nbsp;&nbsp;<%= radio_button_tag "adtype","W" %>&nbsp;Wanted 
+    </td></tr>
+    <tr><td>
+      <%= text_field_tag :mainquery %>
+    </td></tr>
+    <tr><td>
+      <%= collection_select :category, :id, Category.list, :id, :name %>
+    </td></tr>
+    <tr><td>
+      <%= submit_tag "search"%>
+    </td></tr>
+   </table>
+  <% end %>    
+</td>
+<td>&nbsp;&nbsp;</td>
+<td>
+  <table>
+  <tr><td align="center" colspan="7" id="cityhead"><div><h2><%= @city.name %></h2></div></td></tr> 
+  <tr>
+  <td>
+  <% @categories.each do |c| %>
+  <%   catcount += 1 %>
+    <div class="head"><a href="/<%=[@city.permalink,c.permalink].join('/')%>"><%=c.name%></a></div>
+    <table cellspacing="1" class="cats" width="100%">
+    <tr><td>
+    <% c.subcategories.each do |s| %>
+      <% if s.id == 9 || s.id == 52 || s.id == 79%>
+        </td><td>
+      <% end %>
+      <a href="/<%=[@city.permalink,s.permalink].join('/')%>"><%=s.name%></a>
+    <% end %>  
+    </td></tr>
+    <tr><td>&nbsp;</td></tr></table>
+    <% if c.id == 32 || c.id == 15 %>
+      <% catcount = 0 %>
+      </td><td>&nbsp;</td><td>
+    <% end%>
+  <% end %>
+</td>
+</tr>
+</table>  
+</td>
+<td><%= render :partial => "main/citylist" %></td>
+</tr>
+</table>           

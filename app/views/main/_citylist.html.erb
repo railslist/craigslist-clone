@@ -1,0 +1,21 @@
+<% ctcount=0 %>
+<table cellspacing="0" cellpadding="0" class="www">
+<tr>
+<td>
+<table>  
+  <tr>
+  <td >
+  <% @cities.each do |c| %>
+  <% ctcount += 1 %>    
+    <a href="/<%=c.permalink%>" <%= c.id == session[:cityid]?'style="background:Gold;color:black;font-weight:bold"':''%>><%=c.name%></a>
+    <% if ctcount == 29 %>
+      <% ctcount = 0 %>
+      </td><td>
+    <% end%>
+  <% end %>
+  </td>
+  </tr>
+</table>  
+</td>
+</tr>
+</table>

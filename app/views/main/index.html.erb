@@ -1,0 +1,35 @@
+<% citycount = 0 %>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+  <%= render :partial => "main/logo" %>
+  <%= render :partial => "main/menu" %>  
+</td>
+
+<td>
+  <table cellspacing="0" cellpadding="0" class="www">
+  <tr>
+  <td>
+  <table>
+  <tr>  
+  <td colspan="9" class="head"><h2>please select a city</h2></td>
+  </tr>
+  <tr>
+  <td >
+  <% @cities.each do |c| %>
+  <% citycount += 1 %>
+    <a href="/<%=c.permalink%>"><%=c.name%></a>
+    <% if citycount == 20 %>
+      <% citycount = 0 %>
+      </td><td>
+    <% end%>
+  <% end %>
+  </td>
+  </tr>
+  </table>  
+  </td>
+  </tr>
+  </table>  
+</td>
+</tr>
+</table>

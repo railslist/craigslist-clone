@@ -1,0 +1,54 @@
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+  <%= render :partial => "main/logo" %>
+  <%= render :partial => "users/menu" %>
+</td>
+<td>
+<blockquote>
+<h3>you are editing a category</h3>
+<table cellspacing="2" cellpadding="2" class="www">
+<tr>
+<td>
+<% form_for(@subcategory) do |f| %>
+  <%= f.error_messages %>
+  <tr>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :parent %><br />
+    <%= f.collection_select(:parent_id, Category.list, :id, :name) %>
+  </p>  
+  <p>
+    <%= f.label "SEO URL" %><br />
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label "Page Title" %><br />
+    <%= f.text_field :pagetitle %>
+  </p>
+  <p>
+    <%= f.label "Meta Keywords" %><br />
+    <%= f.text_area :metakey, :size=>'25x5' %>
+  </p>
+  <p>
+    <%= f.label "Meta Description" %><br />
+    <%= f.text_area :metadesc, :size=>'25x5' %>
+  </p>    
+  </tr>
+  <tr>
+  <p>  
+    <%= f.submit "Update" %>
+  </p>
+  </tr>
+<% end %>
+</td>
+</tr>
+</table>
+<br />
+</blockquote>
+</td>
+</tr>
+</table>

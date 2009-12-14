@@ -1,0 +1,48 @@
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+  <%= render :partial => "main/logo" %>
+  <%= render :partial => "users/menu" %>
+</td>
+<td>
+<blockquote>
+<h3>you are adding a new city</h3>
+<table cellspacing="2" cellpadding="2" class="www">
+<tr>
+<td>
+<% form_for(@city) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label "SEO URL" %><br />
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label "Page Title" %><br />
+    <%= f.text_field :pagetitle %>
+  </p>
+  <p>
+    <%= f.label "Meta Keywords" %><br />
+    <%= f.text_area :metakey, :size=>'25x5' %>
+  </p>
+  <p>
+    <%= f.label "Meta Description" %><br />
+    <%= f.text_area :metadesc, :size=>'25x5' %>
+  </p>      
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+</td>
+</tr>
+</table>
+<br />
+</blockquote>
+</td>
+</tr>
+</table>
+

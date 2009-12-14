@@ -1,0 +1,31 @@
+<% if !(admin?) %>
+  <center>
+    <table cellspacing="2" cellpadding="2" class="www">
+  <% form_tag user_path do %>
+    <tr>
+    <td colspan="2"><h2>Administrator Login</h2></td>
+    </tr>
+    <tr>
+    <td>
+      Password: <%= password_field_tag :password%>
+    </td>
+    <td>
+    <%= submit_tag 'login' %>
+    </td>
+    </tr>
+  </table>       
+  <br /><br />
+  <small>powered by: <a href="http://www.railslist.com">railslist</a></small>  
+  </center>
+  <% end %>  
+<% else %>
+  <table cellspacing="0" cellpadding="0">
+  <tr>
+  <td id="leftbar">
+    <%= render :partial => "main/logo" %>
+    <%= render :partial => "users/menu" %>
+  </td>
+  <td>&nbsp;&nbsp;</td>
+  </tr>
+  </table>
+<% end %>

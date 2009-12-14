@@ -1,0 +1,14 @@
+  <%form_tag 'categorysearch', :method=>'get' do %>
+  <table width="100%" cellpadding="2" id="categorysearch">
+  <tr>
+  <td align="right">search for:</td> 
+  <td>
+    <%= text_field_tag :mainquery, params[:mainquery] %> in    
+    <%= collection_select(:subcategory, :id, Subcategory.list(session[:categoryid]), :id, :name, :prompt=>true) %>              
+    <%= radio_button_tag "adtype","O", :checked=>true %>Offered
+    <%= radio_button_tag "adtype","W" %>Wanted 
+    &nbsp;<%= submit_tag "Search"%>
+  </td>
+  </tr>
+  </table>
+  <% end %>

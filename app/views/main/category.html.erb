@@ -1,0 +1,48 @@
+<div class="breadcrumb">
+  <span id="bc">               
+    [&nbsp;<a href="#">help</a>&nbsp;] [&nbsp;<%= link_to "post", new_classified_path %>&nbsp;]
+  </span>  
+  <a href="/<%= @city.permalink %>"><%= @city.name %></a> > <a href="/<%=[@city.permalink,@category.permalink].join('/') %>"><%= @category.name %></a>
+</div> 
+
+<blockquote>
+  <%form_tag 'categorysearch', :method=>'get' do %>
+  <table width="100%" cellpadding="2" id="categorysearch">
+  <tr>
+  <td align="right">search for:</td> 
+  <td>
+    <%= text_field_tag :mainquery %> in    
+    <%= collection_select(:subcategory, :id, Subcategory.list(session[:categoryid]), :id, :name, :prompt=>true) %>              
+    <%= radio_button_tag "adtype","O", :checked=>true %>Offered
+    <%= radio_button_tag "adtype","W" %>Wanted 
+    &nbsp;<%= submit_tag "Search"%>
+  </td>
+  </tr>
+  </table>
+  <% end %>
+<br />
+<table width="100%">
+<tr><td>
+<% @classifieds.group_by { |c| c.created_at.to_date }.each do |d, classifieds| %>
+<h4><%= d.strftime('%a, %d %b') %></h4>
+  <% for c in classifieds %>
+    <%if c.image.exists? -%>
+      <p><a href="/<%=[c.city.permalink,c.subcategory.permalink,c.permalink].join('/')%>"><%=c.title%></a> <%=" - (#{c.location}) " if !c.location.blank?%> <span class='pic'>pic</span> &lt;&lt; <i><a href="/<%=[c.city.permalink,c.subcategory.permalink].join('/')%>"><%=c.subcategory.name%></a></i></p>           
+    <%else%>
+      <p><a href="/<%=[c.city.permalink,c.subcategory.permalink,c.permalink].join('/')%>"><%=c.title%></a> <%=" - (#{c.location}) " if !c.location.blank?%> &lt;&lt; <i><a href="/<%=[c.city.permalink,c.subcategory.permalink].join('/')%>"><%=c.subcategory.name%></a></i></p>           
+    <%end%>
+  <% end %>  
+<% end %>
+<br />
+<%= will_paginate @classifieds %><br />
+<hr />
+
+<div id="poweredby">powered by <a href="http://www.railslist.com">railslist</a></div>
+</td>
+</tr>
+</table>
+</blockquote>
+ 
+
+
+

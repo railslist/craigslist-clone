@@ -1,0 +1,86 @@
+<div class="breadcrumb">
+  <span id="bc">   
+    <b>edit your classified ad</b>
+  </span> 			
+  <b><%= link_to "[ home ]", "/" %></b>
+</div>
+
+<div class="highlight">
+  please post to a single city and category only.&nbsp;&nbsp;posting to multiple cities and/or categories are not allowed!.
+</div>
+
+<blockquote>
+<table align="center">
+<tr>
+<td>
+<% form_for :classified, @classified, :url => { :action => "update", :activation_code=>@classified.activation_code }, :html => { :multipart => true } do |f| %>
+  <%= error_messages_for 'classified', :header_message=>'please rectify these errors !', :message=>"" %>
+  <fieldset>
+  <legend>1. choose a category, a city and enter specific location</legend>
+  <table>
+  <tr>  
+  <td>category<br />
+  <select id="classified_subcategory_id" name="classified[subcategory_id]">
+    <%= option_groups_from_collection_for_select(Category.list, :subcategories, :name, :id, :name, @classified.subcategory_id ) %>  
+  </select>  
+  </td>    
+  <td>&nbsp;</td>
+  <td>city<br />
+  <%= collection_select(:classified, :city_id, City.list, :id, :name) %>
+  </td>
+  <td>&nbsp;</td>
+  <td>specific location<br />
+  <%= f.text_field :location, :maxlength=>50, :size=>32, :title=>"provide a specific location/area within the selected city" %>
+  </td>
+  </tr>
+  </table>
+  </fieldset> 
+
+  <fieldset>
+  <legend>2. provide a title and a description</legend>
+  <table>   
+  <tr>  
+  <td colspan="2">posting title:<br />
+    <%= f.text_field :title, :maxlength => 100, :size => 72, :title => "Better Ad Title brings higher responses." %>
+  </td>     
+  <td>&nbsp;</td>
+  <td align="center">choose ad type<br />
+    <%= radio_button "classified", "adtype", "O", :checked=>true, :title=>"Offerd = Goods or Services for sale, for rent, for lease etc" %>Offered
+    <%= radio_button "classified", "adtype", "W", :title=>"Wanted = You are looking to Buy, Rent Goods or Services" %>Wanted
+  </td>      
+  </tr>	
+  <tr>
+   <td colspan="4">posting description:<br />
+   <%= f.text_area :description, :rows => 10, :cols => 72, :title => 'Provide all necessary information such as Price, Terms, Contact Person etc' %>
+  </td>
+  </tr>  
+  </table>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. add/edit image (overwrite's existing image)</legend>
+    <table>
+    <tr>
+      <td><%= f.file_field :image, :size => 80 %></td>
+    </tr>
+    </table>
+  </fieldset>  
+
+  <fieldset>
+    <legend>4. contact information</legend>
+    <table>
+    <tr>
+      <td>Email for Communication <small>(make sure your email is correct!)</small><br />
+      <%= f.text_field :email, :maxlength => 60, :size => 57, :title => 'Site Visitors will write to this mail id when they want to contactyou.' %>
+      </td>
+      <td>Phone / Mobile<br /><%= f.text_field :phone,:maxlength => 15, :size => 30%></td>
+    </tr>   
+    <tr><td colspan="2" style="color:red; font-weight:normal;">we will send an activation link to this email id.</td></tr>    
+    </table>
+  </fieldset>  
+  <center><%= submit_tag 'Update Classifieds', :style=>'font-weight:bold;font-size:14px;margin-top:5px;height:50px;width:150px;' %></center>
+<% end %>
+</td>
+</tr>
+</table>
+</blockquote>

@@ -1,0 +1,16 @@
+<div class="highlight" style="width:305px;background:#ffff73">Be Safe!&nbsp;&nbsp;Avoid Scams!
+<ul  style="text-align:left;color:maroon">
+  <li>never disclose your financial data</li>
+  <li>never provide your personal information</li>
+  <li>if it sounds too good to be true, it probably is</li>
+</ul>   
+</div>
+
+<% form_tag :controller=>'main',:action => "contactadvertiser", :id=>@classified.id do %>	
+<table>          
+  <tr><td align="left">My Email<br /><%= text_field :contact, :email, :size=>'47' %></td></tr>
+  <tr><td align="left">Message to Advertiser<br /><%= text_area :contact, :msg, :cols=>37, :rows=>5 %></td></tr>
+  <tr><td><%= show_simple_captcha(:label=>"<br />(enter code from the image)") %></td></tr>
+  <tr><td><%= submit_tag "Send" %>&nbsp;&nbsp;<input type="reset" value="Clear" /></td></tr>
+</table>
+<% end %>

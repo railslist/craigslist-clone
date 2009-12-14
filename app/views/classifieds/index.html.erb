@@ -1,0 +1,62 @@
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td id="leftbar">
+<%= render :partial => "main/logo" %>
+<%= render :partial => "users/menu" %>
+</td>
+<td>
+
+<table cellspacing="2" cellpadding="2" class="www">
+<tr>
+<td colspan="10" style="background:#ddd;padding:10px;text-align:center">
+
+<%form_tag 'adminsearch', :method=>'get' do %>
+  <select id="fid", name="fid">
+    <%= options_for_select([["Title","title"],["Description","description"],["Ad Type","adtype"],["Status","status"],["Email","email"],["Location","location"]]) %>
+  </select>
+  <select id="fop", name="fop">
+    <%= options_for_select([["=","="],[">",">"],[">=",">="],["<","<"],["<=","<="],["!=","!="],["LIKE","LIKE"],["NOT LIKE", "NOT LIKE"]]) %>
+  </select>
+  <%= text_field_tag :query %> in
+  <%= collection_select(:subcategory, :id, Subcategory.find(:all, :order=>'name asc'), :id, :name,{:prompt=>true} ) %>
+<%= submit_tag "Search"%>
+<% end %>
+</td>
+</tr>
+<tr>
+  <th>id</th>
+  <th>title</th>
+  <th>type</th>
+  <th>email</th>
+  <th>category</th>
+  <th>subcategory</th>
+  <th>status</th>
+</tr>
+
+<% form_tag :action=>'delete_multiple' do %>
+  <% for classified in @classifieds %>
+  <tr style="background:white;font-size:12px;white-space:wrap;">
+    <td><%=h classified.id %></td>
+    <td><%=h classified.title %></td>
+    <td><%=h classified.adtype %></td>
+    <td><%=h classified.email %></td>
+    <td><%=h classified.category.name %></td>
+    <td><%=h classified.subcategory.name %></td>
+    <td><%=h classified.status %></td>   
+    <td><%= link_to "Edit", edit_classified_path(classified)%></td>
+    <td><%= link_to 'Destroy', classified, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= check_box_tag 'remove[id][]', classified.id, false %></td>
+  </tr>
+  <% end %>
+  <tr>
+  <td colspan="10" align="right"><%= submit_tag 'Delete Checked', :confirm => 'permanently deleting marked ads. are you sure?' %></td>
+  </tr>
+ <% end %> 
+</table>
+<%= will_paginate @classifieds %>
+<br />
+
+</td>
+</tr>
+</table>
+
