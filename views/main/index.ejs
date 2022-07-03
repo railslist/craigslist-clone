@@ -1,0 +1,21 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <%- include('../partials/head', {city: city}); %>
+</head>
+
+<body>
+  <div class='wrapper'>
+    <%- include('../partials/header', {city: city, state: state}); %>
+
+      <%- include('../partials/leftbar'); %>
+        <%- include('../partials/rightbar'); %>
+
+          <%- include('../partials/footer'); %>
+  </div>
+  <script src='javascripts/main.js'></script>
+</body>
+
+</html>

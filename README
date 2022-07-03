@@ -1,51 +1,44 @@
-== Welcome to Railslist
+== Welcome to VeteransList
 
-Railslist has been developed in Ruby on Rails, hence the name. It uses MySQL database. It runs out of the box with very little configuration. It comes with a very clean and simple interface like Craigslist™. Using Railslist does not require extensive technical expertise. An average internet user will be at ease setting up Railslist. It's Open Source, that means it is 100% free. Railslist can be used on unlimited domains / websites without any license restrictions. Try it now. You would love it.
+VeteransList has been developed in Node.js. It uses MongoDB database. It runs out of the box with very little configuration. It comes with a very clean and simple interface like Craigslist™. Using VeteransList does not require extensive technical expertise. An average internet user will be at ease setting up VeteransList. It's Open Source, that means it is 100% free. VeteransList can be used on unlimited domains / websites without any license restrictions. Try it now. You would love it.
 
-== Railslist Features
+== VeteransList Features
 
-* Open Source, 100% Free & SEO Enabled.
-* Customizable Titles, Keywords, Descriptions & even URLs.
-* 99% Text Based - Extremely Faster, Superb Performance.
-* Powerful Search - by City, by Category, by Subcategory.
-* Image Upload & Email Verification.
-* Easy Setup and Installation.
-* Simple, Clean and Easy to use interface.
-* Unlimited Categories, Subcategories & Cities.
-* No registration / No Signup to post ads.
-* Stripped down and simplified Admin Interface
-* Issues running railslist?. You are not alone. Ask in our forum
-
+- Open Source, 100% Free & SEO Enabled.
+- Customizable Titles, Keywords, Descriptions & even URLs.
+- 99% Text Based - Extremely Faster, Superb Performance.
+- Powerful Search - by City, by Category, by Subcategory.
+- Image Upload & Email Verification.
+- Easy Setup and Installation.
+- Simple, Clean and Easy to use interface.
+- Unlimited Categories, Subcategories & Cities.
+- No registration / No Signup to post ads.
+- Stripped down and simplified Admin Interface
+- Issues running VeteransList?. You are not alone. Ask in our forum
 
 == Setup & Installation
 
-Railslist can be installed either on a Webserver or locally (Desktop). Irrespective where you install, it is assumed that the target system is already installed with Ruby, Rails, MySQL and ImageMagick/RMagick (used for captcha). Go for Phusion Passenger, if you have a dedicated or semi-dedicated hosting. Passenger offers faster performance.
+VeteransList can be installed either on a Webserver or locally (Desktop). Irrespective where you install, it is assumed that the target system is already installed with Ruby, Rails, MySQL and ImageMagick/RMagick (used for captcha). Go for Phusion Passenger, if you have a dedicated or semi-dedicated hosting. Passenger offers faster performance.
 
-== Prerequisites
-Apache, Ruby 1.8.6, Rails 2.2.2, RMagick/ImageMagick and MySQL / SQLite
-(InstantRails for Desktop - comes with all the above except RMagick/ImageMagick)
-If you are using Rails 2.3.3, then rename application.rb to application_controller.rb
+== Prerequisites Apache, Ruby 1.8.6, Rails 2.2.2, RMagick/ImageMagick and MySQL / SQLite (InstantRails for Desktop - comes with all the above except RMagick/ImageMagick) If you are using Rails 2.3.3, then rename application.rb to application_controller.rb
 
 == Installing on a Webserver
 
-* Download Railslist and unzip contents to /public_html
-* Modify Database Connection settings (/public_html/config/database.yml), to point to your database.
-* Goto database folder (/public_html/db) and run -- rake db:schema:load -- to create necessary tables in your db
-* Change /public_html/config/initializers/siteconfig.rb - set SITENAME = "yoursitename" & SITEURL = "http://www.yoursite.com"
-* Open up /public_html/config/environment.rb, modify ActionMailer settings.
-* Restart Apache. Goto www.yourdomain.com
+- Download VeteransList and unzip contents to /public_html
+- Modify Database Connection settings (/public_html/config/database.yml), to point to your database.
+- Goto database folder (/public_html/db) and run -- rake db:schema:load -- to create necessary tables in your db
+- Change /public_html/config/initializers/siteconfig.rb - set SITENAME = "yoursitename" & SITEURL = "http://www.yoursite.com"
+- Open up /public_html/config/environment.rb, modify ActionMailer settings.
+- Restart Apache. Goto www.yourdomain.com
 
 == Installing Locally / Desktop Installation
 
-* Download and install InstantRails
-* Download Railslist and Unzip it to rails_apps folder
-* Modify Database Connection settings (\railslist\config\database.yml), to point to your database.
-* Goto Railslist db folder (\railslist\db) and run -- rake db:schema:load -- to create necessary tables in your db.
-* Amend \railslist\config\initializers\siteconfig.rb - set SITENAME = "railslist.com" & SITEURL = "http://localhost:3000".
+- Download and install InstantRails
+- Download VeteransList and Unzip it to rails_apps folder
+- Modify Database Connection settings (\VeteransList\config\database.yml), to point to your database.
+- Goto VeteransList db folder (\VeteransList\db) and run -- rake db:schema:load -- to create necessary tables in your db.
+- Amend \VeteransList\config\initializers\siteconfig.rb - set SITENAME = "VeteransList.com" & SITEURL = "http://localhost:3000".
 
-Thats it!. Change to Railslist Directory, Start Railslist -- ruby script/server.
-Open your browser and visit http://localhost:3000.
+Thats it!. Change to VeteransList Directory, Start VeteransList -- ruby script/server. Open your browser and visit http://localhost:3000.
 
-== Logging in as Administrator
-Goto: www.yourdomain/user and use default password: railslist
-You must change default admin password at application.rb
+== Logging in as Administrator Goto: www.yourdomain/user and use default password: VeteransList You must change default admin password at application.rb
